@@ -1,0 +1,103 @@
+@import url("https://fonts.googleapis.com/css2?family=Kanit:wght@500&display=swap");
+
+$background: #282a36;
+$color-primary: #bd93f9;
+$color-secondary: #f8f8f2;
+
+:root {
+  font-family: "Kanit", sans-serif;
+
+  background-color: $background;
+  color: $color-primary;
+
+  user-select: none;
+  overflow: hidden;
+}
+
+@mixin neon($intensity, $color) {
+  filter: drop-shadow(0 0 $intensity $color);
+}
+
+.container {
+  display: flex; 
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  height: 100vh;
+
+  p {
+    width: 95%;
+    word-wrap: break-word;
+
+    @include neon(10px, $color-primary);
+
+    font-size: 2rem;
+    font-weight: 500;
+
+    transition: all 0.5s ease;
+
+    &:hover {
+      color: $color-secondary;
+      @include neon(20px, $color-secondary);
+      transform: scale(1.05);
+      cursor: pointer;
+    }
+  }
+}
+
+.footer {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 1rem;
+  text-align: center;
+  font-size: 0.8rem;
+  color: $color-secondary;
+
+  transition: all 0.5s ease;
+
+  a {
+    @include neon(5px, $color-primary);
+
+    color: $color-primary;
+    text-decoration: none;
+
+    transition: all 0.5s ease;
+
+    &:hover {
+      color: $color-secondary;
+      @include neon(20px, $color-secondary);
+    }
+  }
+
+  &:hover {
+    transform: scale(1.05) skewY(-1deg);
+  }
+}
+
+.github {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  padding: 1rem;
+  font-size: 1rem;
+  color: $color-secondary;
+
+  transition: all 0.5s ease;
+
+  svg {
+    @include neon(5px, $color-primary);
+    height: 2rem;
+    width: 2rem;
+    fill: $color-primary;
+
+    transition: all 0.5s ease;
+
+    &:hover {
+      fill: $color-secondary;
+      @include neon(20px, $color-secondary);
+      transform: scale(1.05) skewY(-1deg);
+    }
+  }
+}
