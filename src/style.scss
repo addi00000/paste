@@ -12,6 +12,21 @@ $color-secondary: #f8f8f2;
 
   user-select: none;
   overflow: hidden;
+
+  // add fade in animation to body
+
+  body {
+    animation: fadeIn 1s;
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+      }
+      to {
+        opacity: 1;
+      }
+    }
+  }
 }
 
 @mixin neon($intensity, $color) {
@@ -40,6 +55,66 @@ $color-secondary: #f8f8f2;
       color: $color-secondary;
       @include neon(20px, $color-secondary);
       transform: scale(1.05);
+      cursor: pointer;
+    }
+  }
+}
+
+.generate {
+  // center
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  button {
+    background-color: transparent;
+    border: none;
+    outline: none;
+    color: $color-primary;
+
+    font-family: "Kanit", sans-serif;
+    font-size: 1.75rem;
+    font-weight: 500;
+
+    margin: 0.3rem;
+    padding: 0.3rem;
+
+    @include neon(10px, $color-primary);
+
+    transition: all 0.5s ease;
+
+    &:hover {
+      color: $color-secondary;
+      @include neon(20px, $color-secondary);
+      cursor: pointer;
+    }
+  }
+
+  input {
+    background-color: transparent;
+    outline: none;
+    color: $color-primary;
+
+    font-family: "Kanit", sans-serif;
+    font-size: 1.5rem;
+    font-weight: 500;
+
+    margin: 0.3rem;
+    padding: 0.3rem;
+
+    @include neon(10px, $color-primary);
+
+    transition: all 0.5s ease;
+
+    &::placeholder {
+      color: rgba($color-primary, 0.5);
+      opacity: 0.85;
+    }
+
+    &:hover {
+      color: $color-secondary;
+      @include neon(20px, $color-secondary);
       cursor: pointer;
     }
   }
@@ -99,5 +174,14 @@ $color-secondary: #f8f8f2;
       @include neon(20px, $color-secondary);
       transform: scale(1.05) skewY(-1deg);
     }
+  }
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
   }
 }
